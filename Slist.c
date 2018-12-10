@@ -22,13 +22,16 @@ pslist slist_new(void) {
 /*
  * Helper slist_pop removes head from the list
  * Params: list - pointer to the list
- * Returns pointer to the new head
+ * Returns pointer to the head
  */
 
 pslist_entry slist_pop(pslist list) {
 	if (NULL != list->head) {
+		pslist_entry pcurr = list->head;
+		free(list->head);
+		list->head = pcurr->next;
+		free(pcurr);
 		list->list_size--;
-		list->head = list->head->next;
 	};
 	return list->head;
 }
@@ -60,15 +63,14 @@ int slist_insert(pslist list, int value) {
 
 int slist_remove(pslist list, int value) {
 	while (list->head->value == value)
-	{
 		slist_pop(list);
-		list->list_size--;
-	}
+
 	pslist_entry pcurr = list->head, ptemp; //declare pslist_entry temp to store temporary info about curr->next
-	while (NULL != pcurr) {
+	while (NULL != pcurr->next) {
 		if ((pcurr->next)->value == value) {
 			ptemp = pcurr->next;
 			free(pcurr->next);
+			pcurr->next = NULL;
 			if (NULL != pcurr->next) {
 				printf("Element was not deleted");
 				return -1;
@@ -77,6 +79,11 @@ int slist_remove(pslist list, int value) {
 			list->list_size--;
 		}
 		pcurr = pcurr->next;
+	}
+	if (pcurr->value == value) {
+		free(pcurr);
+		pcurr = NULL;
+		list->list_size--;
 	}
 	return 0;
 }
