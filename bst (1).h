@@ -1,74 +1,67 @@
-/*
- * This file is bst.h
- * Header for bst.c - Binary Search Tree implementation
- */
+/* 
+* This file is bst.h 
+* Header for bst.c 
+*/ 
 
-#pragma once
+#pragma once 
 
-//Forward declaration
+//Forward declaration 
 
-#define FALSE 0
-#define TRUE 1
+typedef struct _TREE_NODE *PTREE_NODE; 
 
-typedef struct _TREE_NODE *PTREE_NODE;
+typedef struct _TREE_NODE { 
+int key; 
+PTREE_NODE left, right; 
+} TREE_NODE; 
 
-typedef struct _TREE_NODE {
-	int key;
-	PTREE_NODE left, right;
-} TREE_NODE;
+/* 
+* Creates an empty tree 
+* Arguments: none 
+* Returns pointer to the created tree 
+*/ 
 
-// extern FILE *g_log;
+PTREE_NODE create_tree(void); 
 
-/*
- * Creates new empty tree
- * Arguments: none
- * Returns pointer to the created tree
- */
+/* 
+* Adds new element to the BST 
+* Arguments: 
+* tree - pointer to the tree 
+* key - value of map key 
+* Returns pointer to the tree (created or existing) 
+*/ 
 
-//PTREE_NODE init_tree(void);
+PTREE_NODE add_node(PTREE_NODE tree, int key); // prototype 
 
-/*
- * Adds new element to the BST
- * Arguments:
- * 	tree - pointer to the tree
- *	key  - value of map key
- * Returns pointer to the tree (created or existing)
- */
+/* 
+* Deletes existing element with the given key from the tree 
+* Arguments: 
+* tree - pointer to the tree 
+* key - value of map key 
+* Returns pointer to the deleted node 
+*/ 
 
-PTREE_NODE add_node(PTREE_NODE tree, int key); // prototype
+PTREE_NODE delete_node(PTREE_NODE tree, int key); 
 
-/*
- * Deletes existing element with the given key from the tree
- * Arguments:
- *  tree - pointer to the tree
- *  key - value of map key
- * Returns pointer to the deleted node
- */
+/* 
+* Does depth-first search of the tree and prints all nodes 
+* Arguments: tree - pointer to the tree 
+* Returns: none 
+*/ 
 
-PTREE_NODE delete_node(PTREE_NODE tree, int key);
+void dfs(PTREE_NODE tree); 
 
-/*
- * Prints all the nodes of the tree
- * Arguments: tree - pointer to the tree
- * Returns: none
- */
+/* 
+* Does width-first search of the tree and prints all nodes 
+* Arguments: tree - pointer to the tree 
+* Returns: none 
+*/ 
 
-void print_tree(PTREE_NODE tree);
+void wfs(PTREE_NODE tree); 
 
-/*
- * Finds the node with the given value of the key
- * Arguments:
- *  tree - pointer to the tree where to search
- *  key - the value of the key
- * Returns pointer to the found node
- */
-
-PTREE_NODE find(PTREE_NODE tree, int key);
-
-/*
- * Destroys the existinct tree and all its nodes
- * Arguments: tree - pointer to the tree
- * Returns: none
- */
+/* 
+* Destroys the existinct tree and all its nodes 
+* Arguments: tree - pointer to the tree 
+* Returns: none 
+*/ 
 
 void destroy_tree(PTREE_NODE tree);
