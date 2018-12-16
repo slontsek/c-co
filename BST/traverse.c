@@ -31,7 +31,7 @@ void traverse(PTREE_NODE tree, int depth) {
 
 	if (tree == NULL) {
 		padding('\t', depth);
-		puts("õ");
+		puts("Ãµ");
 	}
 	else {
 		traverse(tree->right, depth + 1);
