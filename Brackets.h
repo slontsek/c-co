@@ -22,12 +22,12 @@ struct bracket
  * Returns: none
  */
 
-void push(pbracket top, int new_value);
+void push(pbracket *top, int new_value);
 
 /* 
  * Function to pop a bracket from the stack
  * Params: top - pointer to the top bracket
- * Retirns the popped bracket
+ * Returns the popped bracket
  */
 
-int pop(pbracket top);
+char pop(pbracket *top);
