@@ -70,7 +70,7 @@ int main()
 }
 
 /* Function to push an item to stack*/
-void push(pbracket top, int new_value)
+void push(pbracket *top, int new_value)
 {
 	/* allocate memory for a new bracket */
 	pbracket new_bracket =
@@ -80,20 +80,20 @@ void push(pbracket top, int new_value)
 	new_bracket->value = new_value;
 
 	/* link the old stack with the new bracket */
-	new_bracket->next = top;
+	new_bracket->next = *top;
 
 	/* move the top to the new bracket */
-	top = new_bracket;
+	*top = new_bracket;
 }
 
 /* function to pop a bracket from the stack */
-int pop(pbracket top)
+char pop(pbracket *top)
 {
 	char res;
 	pbracket new_top;
-	new_top = top;
+	new_top = *top;
 	res = new_top->value;
-	top = new_top->next;
+	*top = new_top->next;
 	free(new_top);
 	return res;
 }
