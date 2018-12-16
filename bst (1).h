@@ -1,6 +1,6 @@
 /*
- * This file is bst.h
- * Header for bst.c
+ * This file is bst (1).h
+ * Header for bst (1).c
  */
 
 #pragma once
