@@ -19,14 +19,14 @@ typedef struct Node {
 
 /*
  * Adds a new node to the tree
- * Params: x - pointer to the tree, s - surname of a new node, t - phone number of a new node
+ * Params: p - pointer to the tree, s - surname of a new node, t - phone number of a new node
  * Returns pointer to the updated tree
  */
 
 pnode add_node(pnode p, char s[MAX_SIZE], char t[MAX_SIZE]);
 
 /*
- * Âifference between heights of left and right subtrees
+ * Difference between heights of left and right subtrees
  * Params: p - pointer to the node
  * Returns: (height of the right subtree) - (height of the left subtree)
  */
@@ -82,4 +82,3 @@ pnode find_node(pnode p, char s[MAX_SIZE]);
  */
 
 void find(pnode p, char s[MAX_SIZE]);
-
